@@ -1,0 +1,46 @@
+<script src="https://js.klevu.com/core/v2/klevu.js"></script>
+<script src="https://js.klevu.com/recs/v2/klevu-recs.js"></script>
+
+<script>
+    var kmcData = "https://js.klevu.com/klevu-js-v1/klevu-js-api/"
+
+    function startup(klevu) {
+        var klevuAPIKeys = $include(Klevu-GetAPIKeys)$;
+        var klevuURL = $include(Klevu-GetSearchURL)$;
+        var klevuSearchURL = klevuURL.searchURL;
+        var options = {
+            powerUp: {
+                recsModule: true
+            },
+            recs: {
+                apiKey: klevuAPIKeys.apiKey
+            },
+            url: {
+                search: klevuSearchURL,
+                landing: '$url(Search-Show)$',
+                protocol: 'https:',
+                protocolFull: "https://",
+                analytics: "https://stats.klevu.com/analytics/",
+                analyticsCat: "https://stats.ksearchnet.com/analytics/",
+                kmcData: kmcData
+            },
+            localSettings: true,
+            search: {
+                apiKey: klevuAPIKeys.apiKey,
+                minChars: 0,
+                placeholder: "Search",
+                searchBoxSelector: ".klevu-search-field",
+                searchBoxTarget: false
+            },
+            analytics: {
+                apiKey: klevuAPIKeys.apiKey
+            }
+        };
+        klevu(options);
+    };
+    klevu.interactive(function () {
+        startup(klevu);
+    });
+</script>
+
+<script src="https://js.klevu.com/theme/default/v2/quick-search-theme.js"></script>
